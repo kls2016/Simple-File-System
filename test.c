@@ -1789,3 +1789,12 @@ double harmonicSum(int n) {
     }
     return sum;
 }
+
+int sum2nterms(int n){
+	return (n*(n+1))/2;
+}
+
+float compoundInterest(int n, int r, int principle)
+{
+	return (principle*power((double)(1 + (float)r/100), n);
+}
