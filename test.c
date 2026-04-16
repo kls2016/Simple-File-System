@@ -1970,4 +1970,25 @@ void insertionSort(int arr[], int n) {
 
         arr[j + 1] = key; // place key in correct position
     }
+void selectionSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int minIndex = i;
+
+        // Find the minimum element in remaining array
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+
+        // Swap the found minimum with first element
+        if (minIndex != i) {
+            int temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+        }
+    }
 }
+
+
+
