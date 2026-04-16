@@ -1992,3 +1992,21 @@ int ternarySearch(int arr[], int left, int right, int key) {
     }
     return -1; // not found
 }
+
+void permute(char *str, int left, int right) {
+    if (left == right) {
+        printf("%s\n", str);
+        return;
+    }
+
+    for (int i = left; i <= right; i++) {
+        // Swap current index with left
+        swap(&str[left], &str[i]);
+
+        // Recurse for remaining substring
+        permute(str, left + 1, right);
+
+        // Backtrack (restore original string)
+        swap(&str[left], &str[i]);
+    }
+}
