@@ -473,19 +473,6 @@ void printMatrix(int r, int c, int M[r][c]) {
 
 #include <stdio.h>
 
-/* Bubble Sort */
-void bubbleSort(int arr[], int n) {
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
-                int temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
-        }
-    }
-}
-
 /* Binary Search (array must be sorted) */
 int binarySearch(int arr[], int left, int right, int key) {
     while (left <= right) {
