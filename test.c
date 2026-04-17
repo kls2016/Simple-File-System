@@ -2010,3 +2010,49 @@ void permute(char *str, int left, int right) {
         swap(&str[left], &str[i]);
     }
 }
+
+
+int getMax(int arr[], int n) 
+{
+    int max = arr[0];
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > max)
+            max = arr[i];
+    }
+    return max;
+}
+
+// Counting Sort function
+void countingSort(int arr[], int n) 
+{
+    int max = getMax(arr, n);
+
+    // Create count array
+    int *count = (int *)calloc(max + 1, sizeof(int));
+    int *output = (int *)malloc(n * sizeof(int));
+
+    // Count occurrences
+    for (int i = 0; i < n; i++) {
+        count[arr[i]]++;
+    }
+
+    // Convert count[] to cumulative count[]
+    for (int i = 1; i <= max; i++) {
+        count[i] += count[i - 1];
+    }
+
+    // Build output array (stable sort)
+    for (int i = n - 1; i >= 0; i--) {
+        output[count[arr[i]] - 1] = arr[i];
+        count[arr[i]]--;
+    }
+
+    // Copy output back to original array
+    for (int i = 0; i < n; i++) {
+        arr[i] = output[i];
+    }
+
+    // Free memory
+    free(count);
+    free(output);
+}
