@@ -2056,3 +2056,42 @@ void countingSort(int arr[], int n)
     free(count);
     free(output);
 }
+
+void radixSort(int arr[], int n) {
+    int max = getMax(arr, n);
+
+    // Apply counting sort for each digit
+    for (int exp = 1; max / exp > 0; exp *= 10)
+        countingSort(arr, n, exp);
+}
+
+// Define tree node structure
+struct TreeNode {
+    int value;
+    struct TreeNode* leftChild;
+    struct TreeNode* rightChild;
+};
+
+// Create a new tree node
+struct TreeNode* createTreeNode(int val) {
+    struct TreeNode* node = (struct TreeNode*)malloc(sizeof(struct TreeNode));
+    node->value = val;
+    node->leftChild = NULL;
+    node->rightChild = NULL;
+    return node;
+}
+
+// Insert into BST
+struct TreeNode* insertNode(struct TreeNode* rootNode, int val) {
+    // If tree is empty
+    if (rootNode == NULL)
+        return createTreeNode(val);
+
+    // Traverse and insert
+    if (val < rootNode->value)
+        rootNode->leftChild = insertNode(rootNode->leftChild, val);
+    else if (val > rootNode->value)
+        rootNode->rightChild = insertNode(rootNode->rightChild, val);
+
+    return rootNode;
+}
