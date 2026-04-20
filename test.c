@@ -2095,3 +2095,12 @@ struct TreeNode* insertNode(struct TreeNode* rootNode, int val) {
 
     return rootNode;
 }
+
+// Inorder traversal: Left → Root → Right
+void inorderTraversal(struct TreeNode* rootNode) {
+    if (rootNode != NULL) {
+        inorderTraversal(rootNode->leftChild);   // visit left subtree
+        printf("%d ", rootNode->value);          // visit root
+        inorderTraversal(rootNode->rightChild);  // visit right subtree
+    }
+}
