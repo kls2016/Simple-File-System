@@ -11,11 +11,11 @@ int run_tests_main(void);
 
 #define MAX_SIZE 100
 
-struct TreeNode {
+typedef struct TreeNode {
     int value;
     struct TreeNode* leftChild;
     struct TreeNode* rightChild;
-};
+}TreeNode ;
 
 /* Function declarations */
 
@@ -30,7 +30,9 @@ double subtract(double a, double b);
 double multiply(double a, double b);
 double divide(double a, double b);
 double calculate(double a, double b, char operator);
-struct TreeNode* createTreeNode(int val);
-struct TreeNode* insertNode(struct TreeNode* rootNode, int val);
+TreeNode* createTreeNode(int val);
+TreeNode* insertNode(TreeNode* rootNode, int val);
+void merge(int arr[], int left, int mid, int right);
+void mergeSort(int arr[], int left, int right);
 
 #endif	// TEST_H
