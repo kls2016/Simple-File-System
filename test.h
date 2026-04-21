@@ -34,5 +34,8 @@ TreeNode* createTreeNode(int val);
 TreeNode* insertNode(TreeNode* rootNode, int val);
 void merge(int arr[], int left, int mid, int right);
 void mergeSort(int arr[], int left, int right);
+void swap(int *a, int *b);
+int partition(int arr[], int low, int high);
+void quickSort(int arr[], int low, int high);
 
 #endif	// TEST_H
