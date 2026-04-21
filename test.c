@@ -26,6 +26,7 @@
 #define N_BLOCKS 250			// Number of blocks in the device
 #define DEV_SIZE N_BLOCKS *BLOCK_SIZE // Device size, in bytes
 
+#if 0
 int main()
 {
 	int ret = 0;
@@ -362,6 +363,7 @@ int main()
 
 
 }
+#endif	// if 0
 
 #include <stdio.h>
 
@@ -435,7 +437,9 @@ void merge(int arr[], int left, int mid, int right) {
     int n2 = right - mid;
 
     // Temporary arrays
-    int L[n1], R[n2];
+    int *L, *R;
+	L = (int *)malloc(n1*sizeof(int));
+	R = (int *)malloc(n2*sizeof(int));
 
     // Copy data to temp arrays
     for (i = 0; i < n1; i++)
@@ -472,6 +476,11 @@ void merge(int arr[], int left, int mid, int right) {
         j++;
         k++;
     }
+
+	if(L != NULL)
+		free(L);
+	if(R != NULL)
+		free(R);
 }
 
 // Merge sort function
@@ -518,5 +527,25 @@ void quickSort(int arr[], int low, int high) {
 
         quickSort(arr, low, pi - 1);  // left side
         quickSort(arr, pi + 1, high); // right side
+    }
+}
+
+void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int swapped = 0; // optimization flag
+
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                // swap
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+                swapped = 1;
+            }
+        }
+
+        // If no swaps happened, array is already sorted
+        if (swapped == 0)
+            break;
     }
 }
