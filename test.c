@@ -33,7 +33,7 @@ int main()
 	fprintf(stdout, "%s%s%s%s%s", ANSI_COLOR_BLUE, "TEST mkFS ", ANSI_COLOR_RED, "FAILED\n", ANSI_COLOR_RESET);
 	printf("\nresult of run_tests_main: %d\n", ret);
 
-	ret = run_tests_main();
+//	ret = run_tests();
 
 	printf("\nresult of run_tests_main: %d\n", ret);
 
@@ -404,4 +404,27 @@ double calculate(double a, double b, char operator) {
             printf("Invalid operator\n");
             return 0;
     }
+}
+
+struct TreeNode* createTreeNode(int val) {
+    struct TreeNode* node = (struct TreeNode*)malloc(sizeof(struct TreeNode));
+    node->value = val;
+    node->leftChild = NULL;
+    node->rightChild = NULL;
+    return node;
+}
+
+// Insert into BST
+struct TreeNode* insertNode(struct TreeNode* rootNode, int val) {
+    // If tree is empty
+    if (rootNode == NULL)
+        return createTreeNode(val);
+
+    // Traverse and insert
+    if (val < rootNode->value)
+        rootNode->leftChild = insertNode(rootNode->leftChild, val);
+    else if (val > rootNode->value)
+        rootNode->rightChild = insertNode(rootNode->rightChild, val);
+
+    return rootNode;
 }

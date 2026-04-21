@@ -30,5 +30,7 @@ double subtract(double a, double b);
 double multiply(double a, double b);
 double divide(double a, double b);
 double calculate(double a, double b, char operator);
+struct TreeNode* createTreeNode(int val);
+struct TreeNode* insertNode(struct TreeNode* rootNode, int val);
 
 #endif	// TEST_H
