@@ -26,6 +26,7 @@
 #define N_BLOCKS 250			// Number of blocks in the device
 #define DEV_SIZE N_BLOCKS *BLOCK_SIZE // Device size, in bytes
 
+#if 0
 int main()
 {
 	int ret = 0;
@@ -362,6 +363,7 @@ int main()
 
 
 }
+#endif	// if 0
 
 #include <stdio.h>
 
@@ -435,7 +437,9 @@ void merge(int arr[], int left, int mid, int right) {
     int n2 = right - mid;
 
     // Temporary arrays
-    int L[n1], R[n2];
+    int *L, *R;
+	L = (int *)malloc(n1*sizeof(int));
+	R = (int *)malloc(n2*sizeof(int));
 
     // Copy data to temp arrays
     for (i = 0; i < n1; i++)
@@ -472,6 +476,11 @@ void merge(int arr[], int left, int mid, int right) {
         j++;
         k++;
     }
+
+	if(L != NULL)
+		free(L);
+	if(R != NULL)
+		free(R);
 }
 
 // Merge sort function
@@ -518,5 +527,79 @@ void quickSort(int arr[], int low, int high) {
 
         quickSort(arr, low, pi - 1);  // left side
         quickSort(arr, pi + 1, high); // right side
+    }
+}
+
+void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int swapped = 0; // optimization flag
+
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                // swap
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+                swapped = 1;
+            }
+        }
+
+        // If no swaps happened, array is already sorted
+        if (swapped == 0)
+            break;
+    }
+}
+
+// Heapify a subtree rooted at index i
+void heapify(int arr[], int n, int i) {
+    int largest = i;        // root
+    int left = 2 * i + 1;   // left child
+    int right = 2 * i + 2;  // right child
+
+    // If left child is larger
+    if (left < n && arr[left] > arr[largest])
+        largest = left;
+
+    // If right child is larger
+    if (right < n && arr[right] > arr[largest])
+        largest = right;
+
+    // If largest is not root
+    if (largest != i) {
+        swap(&arr[i], &arr[largest]);
+
+        // Recursively heapify the affected subtree
+        heapify(arr, n, largest);
+    }
+}
+
+// Heap sort function
+void heapSort(int arr[], int n) {
+    // Build max heap
+    for (int i = n / 2 - 1; i >= 0; i--)
+        heapify(arr, n, i);
+
+    // Extract elements from heap one by one
+    for (int i = n - 1; i > 0; i--) {
+        swap(&arr[0], &arr[i]);  // Move current root to end
+        heapify(arr, i, 0);      // Heapify reduced heap
+    }
+}
+
+void permute(char *str, int left, int right) {
+    if (left == right) {
+        printf("%s\n", str);
+        return;
+    }
+
+    for (int i = left; i <= right; i++) {
+        // Swap current index with left
+        swap(&str[left], &str[i]);
+
+        // Recurse for remaining substring
+        permute(str, left + 1, right);
+
+        // Backtrack (restore original string)
+        swap(&str[left], &str[i]);
     }
 }
