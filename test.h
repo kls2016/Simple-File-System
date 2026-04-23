@@ -41,5 +41,6 @@ void bubbleSort(int arr[], int n);
 void heapify(int arr[], int n, int i);
 void heapSort(int arr[], int n);
 void permute(char *str, int left, int right);
+void insertionSort(int arr[], int n);
 
 #endif	// TEST_H
