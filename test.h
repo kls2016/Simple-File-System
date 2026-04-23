@@ -43,5 +43,6 @@ void heapSort(int arr[], int n);
 void permute(char *str, int left, int right);
 void insertionSort(int arr[], int n);
 int ternarySearch(int arr[], int left, int right, int key);
+int isPalindrome(int n);
 
 #endif	// TEST_H
