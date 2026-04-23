@@ -44,5 +44,7 @@ void permute(char *str, int left, int right);
 void insertionSort(int arr[], int n);
 int ternarySearch(int arr[], int left, int right, int key);
 int isPalindrome(int n);
+int getMax(int arr[], int n); 
+void countingSort(int arr[], int n);
 
 #endif	// TEST_H
