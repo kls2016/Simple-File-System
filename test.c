@@ -718,3 +718,11 @@ void countingSort(int arr[], int n)
     free(count);
     free(output);
 }
+
+void radixSort(int arr[], int n) {
+    int max = getMax(arr, n);
+
+    // Apply counting sort for each digit
+    for (int exp = 1; max / exp > 0; exp *= 10)
+        countingSort(arr, n, exp);
+}
