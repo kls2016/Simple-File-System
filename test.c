@@ -618,3 +618,47 @@ void insertionSort(int arr[], int n) {
         arr[j + 1] = key; // place key in correct position
     }
 }
+
+int ternarySearch(int arr[], int left, int right, int key) {
+    while (left <= right) {
+        int mid1 = left + (right - left) / 3;
+        int mid2 = right - (right - left) / 3;
+
+        if (arr[mid1] == key)
+            return mid1;
+
+        if (arr[mid2] == key)
+            return mid2;
+
+        if (key < arr[mid1]) {
+            right = mid1 - 1;
+        } else if (key > arr[mid2]) {
+            left = mid2 + 1;
+        } else {
+            left = mid1 + 1;
+            right = mid2 - 1;
+        }
+    }
+    return -1; // not found
+}
+
+void selectionSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int minIndex = i;
+		int maxIndex = n - 1;
+
+        // Find the minimum element in remaining array
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+
+        // Swap the found minimum with first element
+        if (minIndex != i) {
+            int temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+        }
+    }
+}
