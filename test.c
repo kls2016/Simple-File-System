@@ -641,3 +641,24 @@ int ternarySearch(int arr[], int left, int right, int key) {
     }
     return -1; // not found
 }
+
+void selectionSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int minIndex = i;
+		int maxIndex = n - 1;
+
+        // Find the minimum element in remaining array
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+
+        // Swap the found minimum with first element
+        if (minIndex != i) {
+            int temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+        }
+    }
+}
