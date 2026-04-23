@@ -618,3 +618,26 @@ void insertionSort(int arr[], int n) {
         arr[j + 1] = key; // place key in correct position
     }
 }
+
+int ternarySearch(int arr[], int left, int right, int key) {
+    while (left <= right) {
+        int mid1 = left + (right - left) / 3;
+        int mid2 = right - (right - left) / 3;
+
+        if (arr[mid1] == key)
+            return mid1;
+
+        if (arr[mid2] == key)
+            return mid2;
+
+        if (key < arr[mid1]) {
+            right = mid1 - 1;
+        } else if (key > arr[mid2]) {
+            left = mid2 + 1;
+        } else {
+            left = mid1 + 1;
+            right = mid2 - 1;
+        }
+    }
+    return -1; // not found
+}

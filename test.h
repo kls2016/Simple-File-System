@@ -42,5 +42,6 @@ void heapify(int arr[], int n, int i);
 void heapSort(int arr[], int n);
 void permute(char *str, int left, int right);
 void insertionSort(int arr[], int n);
+int ternarySearch(int arr[], int left, int right, int key);
 
 #endif	// TEST_H
