@@ -46,5 +46,6 @@ int ternarySearch(int arr[], int left, int right, int key);
 int isPalindrome(int n);
 int getMax(int arr[], int n); 
 void countingSort(int arr[], int n);
+void inorderTraversal(struct TreeNode* rootNode);
 
 #endif	// TEST_H
