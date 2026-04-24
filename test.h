@@ -30,5 +30,7 @@ double subtractit(double a, double b);
 double multiplyit(double a, double b);
 double divideit(double a, double b);
 double calculateit(double a, double b, char operator);
+void merge(int arr[], int left, int mid, int right);
+void mergeSort(int arr[], int left, int right);
 
 #endif	// TEST_H
