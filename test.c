@@ -368,22 +368,22 @@ int main()
 #include <stdio.h>
 
 /* Addition */
-double add(double a, double b) {
+double addit(double a, double b) {
     return a + b;
 }
 
 /* Subtraction */
-double subtract(double a, double b) {
+double subtractit(double a, double b) {
     return a - b;
 }
 
 /* Multiplication */
-double multiply(double a, double b) {
+double multiplyit(double a, double b) {
     return a * b;
 }
 
 /* Division */
-double divide(double a, double b) {
+double divideit(double a, double b) {
     if (b == 0) {
         printf("Error: Division by zero\n");
         return 0;
@@ -392,7 +392,7 @@ double divide(double a, double b) {
 }
 
 /* Calculator operation handler */
-double calculate(double a, double b, char operator) {
+double calculateit(double a, double b, char operator) {
     switch (operator) {
         case '+':
             return add(a, b);
@@ -405,333 +405,5 @@ double calculate(double a, double b, char operator) {
         default:
             printf("Invalid operator\n");
             return 0;
-    }
-}
-
-TreeNode* createTreeNode(int val) {
-    TreeNode* node = (TreeNode*)malloc(sizeof(TreeNode));
-    node->value = val;
-    node->leftChild = NULL;
-    node->rightChild = NULL;
-    return node;
-}
-
-// Insert into BST
-TreeNode* insertNode(TreeNode* rootNode, int val) {
-    // If tree is empty
-    if (rootNode == NULL)
-        return createTreeNode(val);
-
-    // Traverse and insert
-    if (val < rootNode->value)
-        rootNode->leftChild = insertNode(rootNode->leftChild, val);
-    else if (val > rootNode->value)
-        rootNode->rightChild = insertNode(rootNode->rightChild, val);
-
-    return rootNode;
-}
-
-void merge(int arr[], int left, int mid, int right) {
-    int i, j, k;
-    int n1 = mid - left + 1;
-    int n2 = right - mid;
-
-    // Temporary arrays
-    int *L, *R;
-	L = (int *)malloc(n1*sizeof(int));
-	R = (int *)malloc(n2*sizeof(int));
-
-    // Copy data to temp arrays
-    for (i = 0; i < n1; i++)
-        L[i] = arr[left + i];
-    for (j = 0; j < n2; j++)
-        R[j] = arr[mid + 1 + j];
-
-    // Merge the temp arrays back into arr
-    i = 0;
-    j = 0;
-    k = left;
-
-    while (i < n1 && j < n2) {
-        if (L[i] <= R[j]) {
-            arr[k] = L[i];
-            i++;
-        } else {
-            arr[k] = R[j];
-            j++;
-        }
-        k++;
-    }
-
-    // Copy remaining elements of L[]
-    while (i < n1) {
-        arr[k] = L[i];
-        i++;
-        k++;
-    }
-
-    // Copy remaining elements of R[]
-    while (j < n2) {
-        arr[k] = R[j];
-        j++;
-        k++;
-    }
-
-	if(L != NULL)
-		free(L);
-	if(R != NULL)
-		free(R);
-}
-
-// Merge sort function
-void mergeSort(int arr[], int left, int right) {
-    if (left < right) {
-        int mid = left + (right - left) / 2;
-
-        // Sort first and second halves
-        mergeSort(arr, left, mid);
-        mergeSort(arr, mid + 1, right);
-
-        // Merge the sorted halves
-        merge(arr, left, mid, right);
-    }
-}
-
-// Swap utility
-void swap(int *a, int *b) {
-    int temp = *a;
-    *a = *b;
-    *b = temp;
-}
-
-// Partition function (Lomuto)
-int partition(int arr[], int low, int high) {
-    int pivot = arr[high];  // choose last element as pivot
-    int i = low - 1;
-
-    for (int j = low; j < high; j++) {
-        if (arr[j] < pivot) {
-            i++;
-            swap(&arr[i], &arr[j]);
-        }
-    }
-
-    swap(&arr[i + 1], &arr[high]);
-    return i + 1;
-}
-
-// QuickSort function
-void quickSort(int arr[], int low, int high) {
-    if (low < high) {
-        int pi = partition(arr, low, high);
-
-        quickSort(arr, low, pi - 1);  // left side
-        quickSort(arr, pi + 1, high); // right side
-    }
-}
-
-void bubbleSort(int arr[], int n) {
-    for (int i = 0; i < n - 1; i++) {
-        int swapped = 0; // optimization flag
-
-        for (int j = 0; j < n - i - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
-                // swap
-                int temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-                swapped = 1;
-            }
-        }
-
-        // If no swaps happened, array is already sorted
-        if (swapped == 0)
-            break;
-    }
-}
-
-// Heapify a subtree rooted at index i
-void heapify(int arr[], int n, int i) {
-    int largest = i;        // root
-    int left = 2 * i + 1;   // left child
-    int right = 2 * i + 2;  // right child
-
-    // If left child is larger
-    if (left < n && arr[left] > arr[largest])
-        largest = left;
-
-    // If right child is larger
-    if (right < n && arr[right] > arr[largest])
-        largest = right;
-
-    // If largest is not root
-    if (largest != i) {
-        swap(&arr[i], &arr[largest]);
-
-        // Recursively heapify the affected subtree
-        heapify(arr, n, largest);
-    }
-}
-
-// Heap sort function
-void heapSort(int arr[], int n) {
-    // Build max heap
-    for (int i = n / 2 - 1; i >= 0; i--)
-        heapify(arr, n, i);
-
-    // Extract elements from heap one by one
-    for (int i = n - 1; i > 0; i--) {
-        swap(&arr[0], &arr[i]);  // Move current root to end
-        heapify(arr, i, 0);      // Heapify reduced heap
-    }
-}
-
-void permute(char *str, int left, int right) {
-    if (left == right) {
-        printf("%s\n", str);
-        return;
-    }
-
-    for (int i = left; i <= right; i++) {
-        // Swap current index with left
-        swap(&str[left], &str[i]);
-
-        // Recurse for remaining substring
-        permute(str, left + 1, right);
-
-        // Backtrack (restore original string)
-        swap(&str[left], &str[i]);
-    }
-}
-
-void insertionSort(int arr[], int n) {
-    for (int i = 1; i < n; i++) {
-        int key = arr[i];   // element to insert
-        int j = i - 1;
-
-        // Move elements greater than key one position ahead
-        while (j >= 0 && arr[j] > key) {
-            arr[j + 1] = arr[j];
-            j--;
-        }
-
-        arr[j + 1] = key; // place key in correct position
-    }
-}
-
-int ternarySearch(int arr[], int left, int right, int key) {
-    while (left <= right) {
-        int mid1 = left + (right - left) / 3;
-        int mid2 = right - (right - left) / 3;
-
-        if (arr[mid1] == key)
-            return mid1;
-
-        if (arr[mid2] == key)
-            return mid2;
-
-        if (key < arr[mid1]) {
-            right = mid1 - 1;
-        } else if (key > arr[mid2]) {
-            left = mid2 + 1;
-        } else {
-            left = mid1 + 1;
-            right = mid2 - 1;
-        }
-    }
-    return -1; // not found
-}
-
-void selectionSort(int arr[], int n) {
-    for (int i = 0; i < n - 1; i++) {
-        int minIndex = i;
-		int maxIndex = n - 1;
-
-        // Find the minimum element in remaining array
-        for (int j = i + 1; j < n; j++) {
-            if (arr[j] < arr[minIndex]) {
-                minIndex = j;
-            }
-        }
-
-        // Swap the found minimum with first element
-        if (minIndex != i) {
-            int temp = arr[i];
-            arr[i] = arr[minIndex];
-            arr[minIndex] = temp;
-        }
-    }
-}
-
-int isPalindrome(int n) {
-    int original = n;
-    int reversed = 0;
-
-    while (n > 0) {
-        reversed = reversed * 10 + (n % 10);
-        n /= 10;
-    }
-    return original == reversed;
-}
-
-int getMax(int arr[], int n) 
-{
-    int max = arr[0];
-    for (int i = 1; i < n; i++) {
-        if (arr[i] > max)
-            max = arr[i];
-    }
-    return max;
-}
-
-// Counting Sort function
-void countingSort(int arr[], int n) 
-{
-    int max = getMax(arr, n);
-
-    // Create count array
-    int *count = (int *)calloc(max + 1, sizeof(int));
-    int *output = (int *)malloc(n * sizeof(int));
-
-    // Count occurrences
-    for (int i = 0; i < n; i++) {
-        count[arr[i]]++;
-    }
-
-    // Convert count[] to cumulative count[]
-    for (int i = 1; i <= max; i++) {
-        count[i] += count[i - 1];
-    }
-
-    // Build output array (stable sort)
-    for (int i = n - 1; i >= 0; i--) {
-        output[count[arr[i]] - 1] = arr[i];
-        count[arr[i]]--;
-    }
-
-    // Copy output back to original array
-    for (int i = 0; i < n; i++) {
-        arr[i] = output[i];
-    }
-
-    // Free memory
-    free(count);
-    free(output);
-}
-
-void radixSort(int arr[], int n) {
-    int max = getMax(arr, n);
-
-    // Apply counting sort for each digit
-    for (int exp = 1; max / exp > 0; exp *= 10)
-        countingSort(arr, n, exp);
-}
-
-// Inorder traversal: Left → Root → Right
-void inorderTraversal(struct TreeNode* rootNode) {
-    if (rootNode != NULL) {
-        inorderTraversal(rootNode->leftChild);   // visit left subtree
-        printf("%d ", rootNode->value);          // visit root
-        inorderTraversal(rootNode->rightChild);  // visit right subtree
     }
 }

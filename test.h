@@ -25,27 +25,10 @@ typedef struct {
 } Stack;
 
 
-double add(double a, double b);
-double subtract(double a, double b);
-double multiply(double a, double b);
-double divide(double a, double b);
-double calculate(double a, double b, char operator);
-TreeNode* createTreeNode(int val);
-TreeNode* insertNode(TreeNode* rootNode, int val);
-void merge(int arr[], int left, int mid, int right);
-void mergeSort(int arr[], int left, int right);
-void swap(int *a, int *b);
-int partition(int arr[], int low, int high);
-void quickSort(int arr[], int low, int high);
-void bubbleSort(int arr[], int n);
-void heapify(int arr[], int n, int i);
-void heapSort(int arr[], int n);
-void permute(char *str, int left, int right);
-void insertionSort(int arr[], int n);
-int ternarySearch(int arr[], int left, int right, int key);
-int isPalindrome(int n);
-int getMax(int arr[], int n); 
-void countingSort(int arr[], int n);
-void inorderTraversal(struct TreeNode* rootNode);
+double addit(double a, double b);
+double subtractit(double a, double b);
+double multiplyit(double a, double b);
+double divideit(double a, double b);
+double calculateit(double a, double b, char operator);
 
 #endif	// TEST_H
