@@ -37,5 +37,6 @@ int partition(int arr[], int low, int high);
 void quickSort(int arr[], int low, int high);
 void heapify(int arr[], int n, int i);
 void heapSort(int arr[], int n);
+void bubbleSort(int arr[], int n);
 
 #endif	// TEST_H
