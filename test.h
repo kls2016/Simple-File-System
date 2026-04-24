@@ -38,5 +38,6 @@ void quickSort(int arr[], int low, int high);
 void heapify(int arr[], int n, int i);
 void heapSort(int arr[], int n);
 void bubbleSort(int arr[], int n);
+void selectionSort(int arr[], int n);
 
 #endif	// TEST_H
