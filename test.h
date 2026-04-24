@@ -28,5 +28,6 @@ typedef struct {
 void merge(int arr[], int left, int mid, int right);
 void mergeSort(int arr[], int left, int right);
 void bubbleSort(int arr[], int n);
+void selectionSort(int arr[], int n);
 
 #endif	// TEST_H
