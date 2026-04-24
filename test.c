@@ -726,3 +726,12 @@ void radixSort(int arr[], int n) {
     for (int exp = 1; max / exp > 0; exp *= 10)
         countingSort(arr, n, exp);
 }
+
+// Inorder traversal: Left → Root → Right
+void inorderTraversal(struct TreeNode* rootNode) {
+    if (rootNode != NULL) {
+        inorderTraversal(rootNode->leftChild);   // visit left subtree
+        printf("%d ", rootNode->value);          // visit root
+        inorderTraversal(rootNode->rightChild);  // visit right subtree
+    }
+}
