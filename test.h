@@ -29,6 +29,7 @@ void merge(int arr[], int left, int mid, int right);
 void mergeSort(int arr[], int left, int right);
 void bubbleSort(int arr[], int n);
 void selectionSort(int arr[], int n);
-void insertionSort(int arr[], int n);
+int insertionSort(int arr[], int n);
+int ternarySearch(int arr[], int left, int right, int key);
 
 #endif	// TEST_H
