@@ -31,5 +31,7 @@ void bubbleSort(int arr[], int n);
 void selectionSort(int arr[], int n);
 int insertionSort(int arr[], int n);
 int ternarySearch(int arr[], int left, int right, int key);
+void heapify(int arr[], int n, int i);
+void heapSort(int arr[], int n);
 
 #endif	// TEST_H
