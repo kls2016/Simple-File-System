@@ -30,5 +30,6 @@ void mergeSort(int arr[], int left, int right);
 void bubbleSort(int arr[], int n);
 void heapify(int arr[], int n, int i);
 void heapSort(int arr[], int n);
+void swap(int *a, int *b);
 
 #endif	// TEST_H

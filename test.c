@@ -367,6 +367,15 @@ int main()
 
 #include <stdio.h>
 
+// Swap utility
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+
+
 void merge(int arr[], int left, int mid, int right) {
     int i, j, k;
     int n1 = mid - left + 1;
