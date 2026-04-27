@@ -422,3 +422,59 @@ void insertionSort(int arr[], int n) {
         arr[j + 1] = key; // place key in correct position
     }
 }
+
+// Swap utility
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+// Partition function (Lomuto)
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high];  // choose last element as pivot
+    int i = low - 1;
+
+    for (int j = low; j < high; j++) {
+        if (arr[j] < pivot) {
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+
+    swap(&arr[i + 1], &arr[high]);
+    return i + 1;
+}
+
+// QuickSort function
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+
+        quickSort(arr, low, pi - 1);  // left side
+        quickSort(arr, pi + 1, high); // right side
+    }
+}
+
+// Heapify a subtree rooted at index i
+void heapify(int arr[], int n, int i) {
+    int largest = i;        // root
+    int left = 2 * i + 1;   // left child
+    int right = 2 * i + 2;  // right child
+
+    // If left child is larger
+    if (left < n && arr[left] > arr[largest])
+        largest = left;
+
+    // If right child is larger
+    if (right < n && arr[right] > arr[largest])
+        largest = right;
+
+    // If largest is not root
+    if (largest != i) {
+        swap(&arr[i], &arr[largest]);
+
+        // Recursively heapify the affected subtree
+        heapify(arr, n, largest);
+    }
+}
