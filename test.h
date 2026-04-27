@@ -11,11 +11,4 @@ int run_tests_main(void);
 
 #define MAX_SIZE 100
 
-void bubbleSort(int arr[], int n);
-void swap(int *a, int *b);
-int partition(int arr[], int low, int high);
-void quickSort(int arr[], int low, int high);
-void merge(int arr[], int left, int mid, int right);
-void mergeSort(int arr[], int left, int right);
-
 #endif	// TEST_H
