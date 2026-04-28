@@ -14,5 +14,7 @@ int run_tests_main(void);
 void bubbleSort(int arr[], int n);
 void selectionSort(int arr[], int n);
 void insertionSort(int arr[], int n);
+void heapify(int arr[], int n, int i);
+void heapSort(int arr[], int n);
 
 #endif	// TEST_H
