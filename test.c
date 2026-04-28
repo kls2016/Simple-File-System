@@ -365,6 +365,14 @@ int main()
 }
 #endif	// if 0
 
+// Swap utility
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+
 void bubbleSort(int arr[], int n) {
     for (int i = 0; i < n - 1; i++) {
         int swapped = 0; // optimization flag
@@ -453,5 +461,31 @@ void heapSort(int arr[], int n) {
     for (int i = n - 1; i > 0; i--) {
         swap(&arr[0], &arr[i]);  // Move current root to end
         heapify(arr, i, 0);      // Heapify reduced heap
+    }
+}
+
+// Partition function (Lomuto)
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high];  // choose last element as pivot
+    int i = low - 1;
+
+    for (int j = low; j < high; j++) {
+        if (arr[j] < pivot) {
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+
+    swap(&arr[i + 1], &arr[high]);
+    return i + 1;
+}
+
+// QuickSort function
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+
+        quickSort(arr, low, pi - 1);  // left side
+        quickSort(arr, pi + 1, high); // right side
     }
 }
