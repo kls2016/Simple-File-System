@@ -16,6 +16,5 @@ void mergeSort(int arr[], int left, int right);
 void swap(int *a, int *b);
 int partition(int arr[], int low, int high);
 void quickSort(int arr[], int low, int high);
-void bubbleSort(int arr[], int n);
 
 #endif	// TEST_H
