@@ -17,5 +17,8 @@ void swap(int *a, int *b);
 int partition(int arr[], int low, int high);
 void quickSort(int arr[], int low, int high);
 void bubbleSort(int arr[], int n);
+void selectionSort(int arr[], int n);
+void insertionSort(int arr[], int n);
+int ternarySearch(int arr[], int left, int right, int key);
 
 #endif	// TEST_H
