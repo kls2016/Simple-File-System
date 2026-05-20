@@ -26,7 +26,7 @@
 #define N_BLOCKS 250			// Number of blocks in the device
 #define DEV_SIZE N_BLOCKS *BLOCK_SIZE // Device size, in bytes
 
-#if 0
+#if 1
 int main()
 {
 	int ret = 0;
@@ -38,7 +38,7 @@ int main()
 
 	printf("\nresult of run_tests_main: %d\n", ret);
 
-#if 0	
+#if 1	
 	/////// MKFS /////////
 	ret = mkFS(DEV_SIZE);
 	if (ret != 0)
